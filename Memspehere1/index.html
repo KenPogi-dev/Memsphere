@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memsphere - Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                    <path d="M10 30 Q15 15, 20 20 T30 10" stroke="#0891b2" stroke-width="4" fill="none"/>
+                </svg>
+                <span>Memsphere</span>
+            </div>
+            <nav>
+                <a href="#dashboard" class="nav-item active" data-view="dashboard">
+                    <span class="icon">⊞</span>
+                    Dashboard
+                </a>
+                <a href="#approvals" class="nav-item" data-view="approvals">
+                    <span class="icon">⚙</span>
+                    Business Approvals
+                </a>
+                <a href="#businesses" class="nav-item" data-view="businesses">
+                    <span class="icon">🏛</span>
+                    All Businesses
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <div id="dashboard-view" class="view active">
+                <header class="header">
+                    <h1>Dashboard</h1>
+                    <div class="header-actions">
+                        <button class="icon-btn">🔔</button>
+                        <button class="icon-btn" onclick="logout()" title="Logout">👤</button>
+                    </div>
+                </header>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total<br>Businesses</h3>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Pending<br>Approvals</h3>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active<br>Businesses</h3>
+                    </div>
+                </div>
+
+                <div class="recent-section">
+                    <h2>Recent Registrations (?)</h2>
+                </div>
+            </div>
+
+            <!-- Business Approvals View -->
+            <div id="approvals-view" class="view">
+                <header class="header">
+                    <h1>Business Approvals</h1>
+                    <div class="header-actions">
+                        <button class="icon-btn">🔔</button>
+                        <button class="icon-btn" onclick="logout()" title="Logout">👤</button>
+                    </div>
+                </header>
+                
+                <div class="controls">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <button class="btn-secondary">🎚 Filter</button>
+                    <button class="btn-secondary">≡ Sort by date</button>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Business Name</th>
+                            <th>Owner</th>
+                            <th>Date Registered</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Daily Grind Cafe</td>
+                            <td>Caster Andres</td>
+                            <td>February 01, 2026</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-approve" onclick="handleApprove(this)">Approve</button>
+                                    <button class="btn-decline" onclick="handleDecline(this)">Decline</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Daily Grind Cafe</td>
+                            <td>Caster Andres</td>
+                            <td>February 01, 2026</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-approve" onclick="handleApprove(this)">Approve</button>
+                                    <button class="btn-decline" onclick="handleDecline(this)">Decline</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Daily Grind Cafe</td>
+                            <td>Caster Andres</td>
+                            <td>February 01, 2026</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-approve" onclick="handleApprove(this)">Approve</button>
+                                    <button class="btn-decline" onclick="handleDecline(this)">Decline</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Daily Grind Cafe</td>
+                            <td>Caster Andres</td>
+                            <td>February 01, 2026</td>
+                            <td><span class="status-badge pending">Pending</span></td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-approve" onclick="handleApprove(this)">Approve</button>
+                                    <button class="btn-decline" onclick="handleDecline(this)">Decline</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- All Businesses View -->
+            <div id="businesses-view" class="view">
+                <header class="header">
+                    <h1>All Businesses</h1>
+                    <div class="header-actions">
+                        <button class="icon-btn">🔔</button>
+                        <button class="icon-btn" onclick="logout()" title="Logout">👤</button>
+                    </div>
+                </header>
+                
+                <div class="controls">
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <button class="btn-secondary">🎚 Filter</button>
+                    <button class="btn-secondary">≡ Sort by date</button>
+                </div>
+
+                <div class="business-grid">
+                    <div class="business-card" data-business='{"name":"Daily Grind Cafe","owner":"Caster Andres","location":"Downtown, Manaoag, Pangasinan","date":"February 01, 2026","status":"active","hours":{"monFri":"6:00 AM to 10:00 PM","saturday":"7:00 AM to 9:00 PM","sunday":"8:00 AM to 8:00 PM"}}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Daily Grind Cafe</h3>
+                            <p>Owned by Caster Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="business-card" data-business='{"name":"Troy&apos;s Ultime Gym","owner":"Troy Andres","location":"Downtown, Manaoag, Pangasinan","date":"January 15, 2026","status":"active","hours":{"monFri":"6:00 AM to 10:00 PM","saturday":"7:00 AM to 9:00 PM","sunday":"8:00 AM to 8:00 PM"}}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Troy's Ultime Gym</h3>
+                            <p>Owned by Troy Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="business-card" data-business='{"name":"Troy&apos;s Ultime Gym","owner":"Troy Andres","location":"Downtown, Manaoag, Pangasinan","date":"January 15, 2026","status":"active","hours":{"monFri":"6:00 AM to 10:00 PM","saturday":"7:00 AM to 9:00 PM","sunday":"8:00 AM to 8:00 PM"}}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Troy's Ultime Gym</h3>
+                            <p>Owned by Troy Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="business-card" data-business='{"name":"Daily Grind Cafe","owner":"Caster Andres","location":"Downtown, Manaoag, Pangasinan","date":"February 01, 2026","status":"pending"}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Daily Grind Cafe</h3>
+                            <p>Owned by Caster Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge pending">Pending</span>
+                    </div>
+                    <div class="business-card" data-business='{"name":"Troy&apos;s Ultime Gym","owner":"Troy Andres","location":"Downtown, Manaoag, Pangasinan","date":"January 15, 2026","status":"active","hours":{"monFri":"6:00 AM to 10:00 PM","saturday":"7:00 AM to 9:00 PM","sunday":"8:00 AM to 8:00 PM"}}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Troy's Ultime Gym</h3>
+                            <p>Owned by Troy Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                    <div class="business-card" data-business='{"name":"Troy&apos;s Ultime Gym","owner":"Troy Andres","location":"Downtown, Manaoag, Pangasinan","date":"January 15, 2026","status":"active","hours":{"monFri":"6:00 AM to 10:00 PM","saturday":"7:00 AM to 9:00 PM","sunday":"8:00 AM to 8:00 PM"}}'>
+                        <div class="card-image"></div>
+                        <div class="card-content">
+                            <h3>Troy's Ultime Gym</h3>
+                            <p>Owned by Troy Andres</p>
+                            <button class="btn-primary" onclick="openBusinessModal(this)">View Details</button>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Business Details -->
+    <div id="businessModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeBusinessModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

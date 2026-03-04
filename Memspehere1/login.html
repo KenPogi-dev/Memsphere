@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memsphere - Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                    <path d="M10 30 Q15 15, 20 20 T30 10" stroke="#0891b2" stroke-width="4" fill="none"/>
+                </svg>
+                <span>Memsphere</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">⊞ Home</a>
+                <a href="#" class="nav-link">🔍 Browse</a>
+                <a href="#" class="nav-link">⏰ About</a>
+                <a href="#" class="nav-link">👤 Contact</a>
+                <a href="#" class="btn-signup">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="login-container">
+        <div class="login-content">
+            <h1>Welcome to Memsphere</h1>
+            <p class="subtitle">Log in to your account to continue connecting with your customers.</p>
+
+            <div class="login-card">
+                <form class="login-form">
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="label-icon">✉</span>
+                            Email
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉</span>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <span class="label-icon">🔒</span>
+                            Password
+                        </label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword()">👁</button>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="btn-login">Log In</button>
+
+                    <!-- Sign Up Link -->
+                    <p class="signup-text">
+                        Don't have an account? <a href="#" class="signup-link">Sign Up</a>
+                    </p>
+                </form>
+
+
+            </div>
+        </div>
+    </main>
+
+
+
+    <script>
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = event.target;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '👁';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁';
+            }
+        }
+
+        // Form submission - redirect to dashboard
+        document.querySelector('.login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.querySelector('input[type="email"]').value;
+            const password = document.querySelector('input[type="password"]').value;
+            
+            // Simple validation
+            if (email && password) {
+                // You can add more validation here (e.g., check against a database)
+                // For demo purposes, accept any email/password
+                
+                // Store login state
+                sessionStorage.setItem('isLoggedIn', 'true');
+                sessionStorage.setItem('userEmail', email);
+                
+                // Show success message
+                alert('Login successful! Redirecting to dashboard...');
+                
+                // Redirect to the admin dashboard
+                window.location.href = 'index.html';
+            } else {
+                alert('Please enter both email and password');
+            }
+        });
+    </script>
+</body>
+</html>
