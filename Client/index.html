@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memsphere - Browse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="50" height="50" viewBox="0 0 60 60">
+                    <path d="M10 35 Q15 25, 20 30 Q25 35, 30 25 Q35 15, 40 20 Q45 25, 50 15" 
+                          stroke="#06b6d4" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Memsphere</span>
+            </div>
+            <div class="nav-links">
+                <a href="home.html" class="nav-link"><span class="icon">⊞</span> Home</a>
+                <a href="index.html" class="nav-link active"><span class="icon">🔍</span> Browse</a>
+                <a href="profile.html" class="nav-link"><span class="icon">👤</span> Profile</a>
+                <a href="about.html" class="nav-link"><span class="icon">ⓘ</span> About</a>
+            </div>
+            <div class="user-section">
+                <span class="icon">👤</span>
+                <span>Mandy</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="search-section">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Search">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">ALL</button>
+                <button class="filter-btn" data-filter="cafe">Cafe</button>
+                <button class="filter-btn" data-filter="gym">Gym</button>
+                <button class="filter-btn" data-filter="bakery">Bakery</button>
+            </div>
+        </div>
+
+        <div class="business-grid" id="businessGrid"></div>
+    </main>
+
+    <div id="detailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
